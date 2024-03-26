@@ -1,8 +1,7 @@
 "use client"; // Error components must be Client Components
 
+import EmptyState from "@/components/empty-state";
 import { useEffect } from "react";
-
-import EmptyState from "@/components/ui/EmptyState";
 
 export default function Error({
   error,
