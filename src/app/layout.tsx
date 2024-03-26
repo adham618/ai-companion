@@ -18,7 +18,6 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   applicationName: siteConfig.name,
-  viewport: "width=device-width, initial-scale=1.0",
   metadataBase: new URL(siteConfig.url),
   alternates: {
     canonical: siteConfig.url,
@@ -35,10 +34,7 @@ export const metadata: Metadata = {
     "AI Companion - OpenAI ChatGPT",
     "AI Companion - OpenAI - ChatGPT - Next.js",
   ],
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
+
   openGraph: {
     type: "website",
     locale: "en_US",
