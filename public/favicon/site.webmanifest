@@ -1,0 +1,14 @@
+{
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "icons": [
+    {
+      "sizes": "192x192",
+      "src": "/android-chrome-192x192.png",
+      "type": "image/png"
+    }
+  ],
+  "name": "UK Driving Theory",
+  "short_name": "UK Driving Theory",
+  "theme_color": "#ffffff"
+}
