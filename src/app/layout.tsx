@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
 
 import "@/styles/globals.css";
 
@@ -94,11 +95,11 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <head />
-      <body className={cn("min-h-screen bg-[#F0F5F8]", inter.className)}>
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <head />
+        <body className={cn("min-h-screen", inter.className)}>{children}</body>
+      </html>
+    </ClerkProvider>
   );
 }
