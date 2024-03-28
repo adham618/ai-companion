@@ -1,11 +1,12 @@
+import { ClerkProvider } from "@clerk/nextjs";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { ClerkProvider } from "@clerk/nextjs";
 
 import "@/styles/globals.css";
 
 import { cn } from "@/lib/utils";
 
+import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/config/site";
 
 const inter = Inter({
@@ -96,9 +97,18 @@ export default async function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <head />
-        <body className={cn("min-h-screen", inter.className)}>{children}</body>
+        <body className={cn("min-h-screen", inter.className)}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </body>
       </html>
     </ClerkProvider>
   );
