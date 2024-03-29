@@ -1,11 +1,13 @@
+import Categories from "@/components/categories";
 import SearchInput from "@/components/search-input";
+import prisma from "@/lib/prismadb";
 
-export default function Home() {
+export default async function Home() {
+  const categories = await prisma.category.findMany();
   return (
-    <main>
-      <div className="space-y-2 p-4">
-        <SearchInput />
-      </div>
-    </main>
+    <div className="space-y-2 p-4">
+      <SearchInput />
+      <Categories data={categories} />
+    </div>
   );
 }
