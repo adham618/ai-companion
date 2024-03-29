@@ -17,7 +17,7 @@ const font = Poppins({
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-primary/10 bg-secondary">
-      <div className="layout flex h-16 items-center justify-between py-2">
+      <div className="flex h-16 items-center justify-between p-4 py-2">
         <div className="flex items-center">
           <MobileSidebar />
           <Link

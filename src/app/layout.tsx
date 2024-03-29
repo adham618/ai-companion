@@ -99,7 +99,7 @@ export default async function RootLayout({
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <head />
-        <body className={cn("min-h-screen", inter.className)}>
+        <body className={cn("min-h-screen bg-secondary", inter.className)}>
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"

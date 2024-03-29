@@ -12,7 +12,7 @@ export default async function RootLayout({
       <div className="fixed inset-y-0 mt-16 hidden w-20 max-w-[90vw] md:flex">
         <Sidebar />
       </div>
-      {children}
+      <main className="md:pl-20">{children}</main>
     </>
   );
 }
