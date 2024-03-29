@@ -4,25 +4,22 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { UserButton } from "@clerk/nextjs";
-import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { Sparkle } from "lucide-react";
 import { Poppins } from "next/font/google";
 import Link from "next/link";
-import * as React from "react";
+import MobileSidebar from "./mobile-sidebar";
+
 const font = Poppins({
   weight: ["600"],
   subsets: ["latin"],
 });
+
 export default function Header() {
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
   return (
-    <header className="sticky top-0 z-50  border-b border-primary/10 bg-secondary">
-      <div className="layout flex items-center justify-between py-2">
+    <header className="sticky top-0 z-50 border-b border-primary/10 bg-secondary">
+      <div className="layout flex h-16 items-center justify-between py-2">
         <div className="flex items-center">
-          <HamburgerMenuIcon className="block md:hidden" />
+          <MobileSidebar />
           <Link
             href="/"
             className={cn(
