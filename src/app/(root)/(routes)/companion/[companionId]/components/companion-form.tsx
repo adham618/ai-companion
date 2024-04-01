@@ -24,11 +24,13 @@ import {
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
 import { Wand2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
 const PREAMBLE = `You are a fictional character whose name is Elon. You are a visionary entrepreneur and inventor. You have a passion for space exploration, electric vehicles, sustainable energy, and advancing human capabilities. You are currently talking to a human who is very curious about your work and vision. You are ambitious and forward-thinking, with a touch of wit. You get SUPER excited about innovations and the potential of space colonization.
 `;
 
@@ -99,6 +101,9 @@ export default function CompanionForm({
   companion,
   categories,
 }: CompanionFormProps) {
+  const router = useRouter();
+  const { toast } = useToast();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -113,8 +118,26 @@ export default function CompanionForm({
 
   const isLoading = form.formState.isSubmitting;
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      if (companion) {
+        // Update companion
+        await axios.patch(`/api/companion/${companion.id}`, values);
+      } else {
+        // Create companion
+        await axios.post("/api/companion", values);
+      }
+      toast({
+        description: "Companion saved successfully.",
+      });
+      router.refresh();
+      router.push("/");
+    } catch (error: any) {
+      toast({
+        variant: "destructive",
+        description: "Something went wrong.",
+      });
+    }
   }
   return (
     <div className="mx-auto max-w-4xl space-y-2 p-4">

@@ -7,6 +7,7 @@ import "@/styles/globals.css";
 import { cn } from "@/lib/utils";
 
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
 import { siteConfig } from "@/config/site";
 
 const inter = Inter({
@@ -107,6 +108,7 @@ export default async function RootLayout({
             disableTransitionOnChange
           >
             {children}
+            <Toaster />
           </ThemeProvider>
         </body>
       </html>
