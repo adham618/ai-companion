@@ -33,7 +33,7 @@ export default function Categories({ data }: categoriesProps) {
       <button
         onClick={() => onClick(undefined)}
         className={cn(
-          "flex items-center rounded-md bg-primary/10 px-2 py-2 text-center text-xs transition hover:opacity-75 md:px-4 md:py-3 md:text-sm",
+          "flex shrink-0 items-center rounded-md bg-primary/10 px-2 py-2 text-center text-xs transition hover:opacity-75 md:px-4 md:py-3 md:text-sm",
           !categoryId && "bg-primary/25",
         )}
       >
@@ -44,7 +44,7 @@ export default function Categories({ data }: categoriesProps) {
           key={category.id}
           onClick={() => onClick(category.id)}
           className={cn(
-            "flex items-center rounded-md bg-primary/10 px-2 py-2 text-center text-xs transition hover:opacity-75 md:px-4 md:py-3 md:text-sm",
+            "flex shrink-0 items-center rounded-md bg-primary/10 px-2 py-2 text-center text-xs transition hover:opacity-75 md:px-4 md:py-3 md:text-sm",
             categoryId === category.id && "bg-primary/25",
           )}
         >
