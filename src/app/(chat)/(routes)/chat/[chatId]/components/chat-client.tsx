@@ -25,27 +25,21 @@ export default function ChatClient({ companion }: ChatClientProps) {
     companion.messages,
   );
 
-  const {
-    completion,
-    input,
-    handleInputChange,
-    setInput,
-    isLoading,
-    handleSubmit,
-  } = useCompletion({
-    api: `/api/chat/${companion.id}`,
-    onFinish: (completion) => {
-      const systemMessage: ChatMessageProps = {
-        role: "system",
-        content: completion,
-      };
+  const { input, handleInputChange, setInput, isLoading, handleSubmit } =
+    useCompletion({
+      api: `/api/chat/${companion.id}`,
+      onFinish: (completion) => {
+        const systemMessage: ChatMessageProps = {
+          role: "system",
+          content: completion,
+        };
 
-      setMessages([...messages, systemMessage]);
-      setInput("");
+        setMessages([...messages, systemMessage]);
+        setInput("");
 
-      router.refresh();
-    },
-  });
+        router.refresh();
+      },
+    });
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     const userMessage: ChatMessageProps = {
