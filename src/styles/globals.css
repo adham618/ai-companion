@@ -79,7 +79,11 @@
   html {
     scroll-behavior: smooth !important;
   }
-
+  html,
+  body,
+  :root {
+    height: 100%;
+  }
   button,
   textarea,
   input,

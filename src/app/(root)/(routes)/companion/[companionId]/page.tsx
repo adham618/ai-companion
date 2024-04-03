@@ -1,4 +1,5 @@
 import prisma from "@/lib/prismadb";
+import { auth, redirectToSignIn } from "@clerk/nextjs";
 import CompanionForm from "./components/companion-form";
 
 type CompanionIdPagePROPS = {
@@ -10,9 +11,15 @@ export default async function CompanionIdPage({
 }: CompanionIdPagePROPS) {
   // TODO: check subscription
   const { companionId } = params;
+  const { userId } = auth();
+
+  if (!userId) {
+    return redirectToSignIn();
+  }
   const companion = await prisma.companion.findUnique({
     where: {
       id: companionId,
+      userId,
     },
   });
   const categories = await prisma.category.findMany();

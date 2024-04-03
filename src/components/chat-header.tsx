@@ -55,7 +55,7 @@ export default function ChatHeader({ companion }: ChatHeaderProps) {
         <Button onClick={() => router.back()} size="icon" variant="ghost">
           <ChevronLeft className="h-8 w-8" />
         </Button>
-        <BotAvatar src={companion.src} name={companion.name} />
+        <BotAvatar src={companion.src} />
         <div className="flex flex-col gap-y-1">
           <div className="flex items-center gap-x-2">
             <p className="font-bold">{companion.name}</p>
