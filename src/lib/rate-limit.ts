@@ -8,10 +8,6 @@ export async function rateLimit(identifier: string) {
     analytics: true,
     prefix: "@upstash/ratelimit",
   });
-  const { success } = await ratelimit.limit(identifier);
 
-  if (!success) {
-    return "Unable to process at this time";
-  }
   return await ratelimit.limit(identifier);
 }

@@ -48,7 +48,7 @@ export default function ChatMessages({
           key={index}
           role={message.role}
           content={message.content}
-          src={message.src}
+          src={companion.src}
           isLoading={message.isLoading}
         />
       ))}
