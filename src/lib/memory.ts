@@ -20,9 +20,12 @@ export class MemoryManager {
     this.history = Redis.fromEnv();
     this.vectorDBClient = new Pinecone();
   }
-
-  public async init() {
-    // The new Pinecone client doesn't have an init method as per the migration guide.
+  public async init(apiKey: string) {
+    // Initialize vectorDBClient with the provided apiKey
+    this.vectorDBClient = new Pinecone({
+      apiKey: process.env.PINECONE_API_KEY! || "",
+    });
+    // Optionally, you can add more initialization logic here
   }
 
   public async vectorSearch(
@@ -50,7 +53,8 @@ export class MemoryManager {
   public static async getInstance(): Promise<MemoryManager> {
     if (!MemoryManager.instance) {
       MemoryManager.instance = new MemoryManager();
-      await MemoryManager.instance.init();
+      // Optionally, you can pass apiKey to init here
+      await MemoryManager.instance.init("YOUR_API_KEY_HERE");
     }
     return MemoryManager.instance;
   }
