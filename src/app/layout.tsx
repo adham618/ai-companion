@@ -6,6 +6,7 @@ import "@/styles/globals.css";
 
 import { cn } from "@/lib/utils";
 
+import ProModal from "@/components/pro-modal";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { siteConfig } from "@/config/site";
@@ -107,6 +108,7 @@ export default async function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <ProModal />
             {children}
             <Toaster />
           </ThemeProvider>
