@@ -12,12 +12,12 @@ type HomePROPS = {
 
 export default async function Home({ searchParams }: HomePROPS) {
   const { categoryId, name } = searchParams;
-
   const data = await prisma.companion.findMany({
     where: {
       categoryId: categoryId,
       name: {
         contains: name,
+        mode: "insensitive",
       },
     },
     orderBy: {
